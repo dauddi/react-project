@@ -1,11 +1,8 @@
-import React from 'react';
-import './App.css';
-import UsersTable from "./components/UsersTable";
+import React from "react";
+import UsersTable from "./components/UserTable";
 
 function App() {
-  return (
-    <UsersTable/>
-  );
+	return <UsersTable />;
 }
 
 export default App;

@@ -1,5 +1,5 @@
 describe("sample", () => {
-    it("sample", () => {
-        expect(true);
-    })
-})
+	it("sample", () => {
+		expect(true);
+	});
+});
