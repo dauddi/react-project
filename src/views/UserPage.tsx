@@ -49,8 +49,6 @@ const UserPage = () => {
 
 		if (res.status === 200) {
 			setUser(res.data);
-		} else {
-			console.log("Username update failed");
 		}
 
 		setIsEditable(false);
@@ -71,27 +69,34 @@ const UserPage = () => {
 							name="username"
 							type="text"
 							onChange={(event) => setUsernameInput(event?.target.value)}
-							value={isEditable ? user?.username : usernameInput}
+							value={isEditable ? usernameInput : user?.username}
 							className="ml-2"
-							disabled={isEditable}
+							disabled={!isEditable}
 						/>
 					</label>
 
-					<button
-						onClick={toggleEdit}
-						type="button"
-						className="ml-4 bg-green-600 text-white font-semibold py-2 px-4"
-					>
-						{isEditable ? "Edit" : "Cancel"}
-					</button>
+					<div className="flex gap-4 my-4">
+						<button
+							onClick={toggleEdit}
+							type="button"
+							className="bg-green-600 text-white font-semibold py-2 px-6 rounded-md"
+						>
+							{isEditable ? "Cancel" : "Edit"}
+						</button>
 
-					<button
-						onClick={handleSubmit}
-						type="submit"
-						className="ml-4 text-white font-semibold py-2 px-4 bg-orange-600"
-					>
-						{isSubmitting ? <Spinner /> : "Save"}
-					</button>
+						<button
+							onClick={handleSubmit}
+							type="submit"
+							disabled={!isEditable && usernameInput === username}
+							className={`text-white font-semibold py-2 px-6 rounded-md ${
+								isEditable && usernameInput !== username
+									? "bg-orange-600"
+									: "bg-gray-500 cursor-not-allowed"
+							}`}
+						>
+							{isSubmitting ? <Spinner /> : "Save"}
+						</button>
+					</div>
 				</div>
 				<p className="text-lg my-2">{`Full Name: ${user?.name}`}</p>
 				<p className="text-lg my-2">{`E-mail: ${user?.email}`}</p>
