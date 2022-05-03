@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FiExternalLink } from "react-icons/fi";
@@ -59,21 +60,19 @@ const UserPage = () => {
 		<Spinner />
 	) : (
 		<div className="p-4">
-			<h1 className="text-xl font-bold mb-6 text-gray-800">User Details</h1>
+			<h1 className="font-bold mb-6 text-gray-800">User Details</h1>
 			<div>
 				<div>
-					<label htmlFor="username">
-						Username:
-						<input
-							id="username"
-							name="username"
-							type="text"
-							onChange={(event) => setUsernameInput(event?.target.value)}
-							value={isEditable ? usernameInput : user?.username}
-							className="ml-2"
-							disabled={!isEditable}
-						/>
-					</label>
+					<label htmlFor="username">Username:</label>
+					<input
+						id="username"
+						name="username"
+						type="text"
+						onChange={(event) => setUsernameInput(event?.target.value)}
+						value={isEditable ? usernameInput : user?.username}
+						className="ml-2 p-2 font-semibold bg-purple-50 rounded-md outline-1 outline-purple-600"
+						disabled={!isEditable}
+					/>
 
 					<div className="flex gap-4 my-4">
 						<button
@@ -98,14 +97,14 @@ const UserPage = () => {
 						</button>
 					</div>
 				</div>
-				<p className="text-lg my-2">{`Full Name: ${user?.name}`}</p>
-				<p className="text-lg my-2">{`E-mail: ${user?.email}`}</p>
-				<p className="text-lg my-2">{`Phone: ${user?.phone.split(" ")[0]}`}</p>
-				<p className="text-lg my-2">{`Address: ${user?.address?.zipcode} ${user?.address?.street}, ${user?.address?.city}`}</p>
+				<p className="my-2">{`Full Name: ${user?.name}`}</p>
+				<p className="my-2">{`E-mail: ${user?.email}`}</p>
+				<p className="my-2">{`Phone: ${user?.phone.split(" ")[0]}`}</p>
+				<p className="my-2">{`Address: ${user?.address?.zipcode} ${user?.address?.street}, ${user?.address?.city}`}</p>
 			</div>
 			<div className="mt-10">
 				<h2 className="text-lg md:text-xl font-bold my-10 text-gray-800">
-					{`View ${user?.name.split(" ")[1]}'s Featured Posts`}
+					{`View ${user?.username}'s Featured Posts`}
 				</h2>
 				<div className="flex gap-5 flex-wrap">
 					{posts?.map((post) => (
