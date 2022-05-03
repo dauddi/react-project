@@ -18,9 +18,9 @@
 	},
 	"include": [
 		"src",
-		"src/components",
-		"src/pages",
-		"tests/components/UserTable.test.ts",
+		"src/views/components",
+		"src/views",
+		"src/tests/components/UserTable.test.ts",
 		"./postcss.config.js",
 		"./tailwind.config.js"
 	]
