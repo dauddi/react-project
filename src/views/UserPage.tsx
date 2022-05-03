@@ -86,7 +86,7 @@ const UserPage = () => {
 						<button
 							onClick={handleSubmit}
 							type="submit"
-							disabled={!isEditable && usernameInput === username}
+							disabled={usernameInput === username || !isEditable}
 							className={`text-white font-semibold py-2 px-6 rounded-md ${
 								isEditable && usernameInput !== username
 									? "bg-orange-600"
